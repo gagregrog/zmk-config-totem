@@ -75,7 +75,7 @@ label= "NUM"                              ;
 //             ┏━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┓          ┏━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┓
 //             ┃    TAB    ┃     F1    ┃     UP    ┃    F2     ┃     {     ┃          ┃     }     ┃     7     ┃     8     ┃     9     ┃     |     ┃
 //             ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫          ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫
-//             ┃   SHIFT   ┃   LEFT    ┃    DOWN   ┃   RIGHT   ┃     [     ┃          ┃     ]     ┃     4     ┃     5     ┃     6     ┃     ;     ┃
+//             ┃   ESC     ┃   LEFT    ┃    DOWN   ┃   RIGHT   ┃     [     ┃          ┃     ]     ┃     4     ┃     5     ┃     6     ┃     ;     ┃
 // ┏━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫          ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┓
 // ┃   BT_CLR  ┃    DEL    ┃   P UP    ┃  C LOCK   ┃  P DOWN   ┃     (     ┃          ┃     )     ┃     1     ┃     2     ┃     3     ┃     \     ┃           ┃
 // ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫          ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
@@ -85,7 +85,7 @@ label= "NUM"                              ;
 // ╷           ╷             ╷             ╷             ╷               ╷        ╷   ╷             ╷               ╷              ╷               ╷           ╷           ╷
 
                 &kp TAB       &kp F1        &kp UP        &kp F2          &kp LBRC     &kp RBRC      &kp KP_N7       &kp KP_N8      &kp KP_N9      &kp PIPE
-                &mt LCTR LESC &mt LALT LEFT &mt LGUI DOWN &mt LSHFT RIGHT &kp LBKT     &kp RBKT      &mt RSHFT KP_N4 &mt RGUI KP_N5 &mt RALT KP_N6 &mt RCTR SEMI
+                &mt LCTRL ESC &mt LALT LEFT &mt LGUI DOWN &mt LSHFT RIGHT &kp LBKT     &kp RBKT      &mt RSHFT KP_N4 &mt RGUI KP_N5 &mt RALT KP_N6 &mt RCTRL SEMI
     &bt BT_CLR  &kp DEL       &kp PG_UP     &kp CAPS      &kp PG_DN       &kp LPAR     &kp RPAR      &kp KP_N1       &kp KP_N2      &kp KP_N3      &kp BSLH      &trans      
                                             &trans        &trans          &trans       &lt SET EQUAL &kp KP_N0       &trans      
                         >;

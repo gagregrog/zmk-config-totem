@@ -24,6 +24,11 @@
 #define LCAG(KEY) LC(LA(LG(KEY)))
 #define MLOCK LG(LC(Q))
 
+&caps_word {
+    continue-list = <UNDERSCORE MINUS>;
+};
+
+
 &mt {
   quick-tap-ms = <100>;
   global-quick-tap;
@@ -33,6 +38,18 @@
 
 / {
         behaviors {
+            vol_up_pp: volume_up_play_pause {
+                compatible = "zmk,behavior-mod-morph";
+                #binding-cells = <0>;
+                bindings = <&kp C_VOL_UP>, <&kp C_PP>;
+                mods = <(MOD_LSFT|MOD_RSFT)>;
+            };
+            vol_dn_mt: volume_down_mute {
+                compatible = "zmk,behavior-mod-morph";
+                #binding-cells = <0>;
+                bindings = <&kp C_VOL_DN>, <&kp C_MUTE>;
+                mods = <(MOD_LSFT|MOD_RSFT)>;
+            };
             spaceback: space_backspace {
                 compatible = "zmk,behavior-mod-morph";
                 #binding-cells = <0>;
@@ -53,7 +70,7 @@ label= "BASE"                              ;
 //             ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫
 //             ┃     A     ┃     R     ┃     S     ┃     T     ┃     G     ┃   ┃     M     ┃     N     ┃     E     ┃     I     ┃     O     ┃
 // ┏━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┓
-// ┃ CAPS WORD ┃     Z     ┃     X     ┃     C     ┃     D     ┃     V     ┃   ┃     K     ┃     H     ┃     ,     ┃     .     ┃     /     ┃     \     ┃
+// ┃ CAPS WORD ┃     Z     ┃     X     ┃     C     ┃     D     ┃     V     ┃   ┃     K     ┃     H     ┃     ,     ┃     .     ┃     /     ┃ CAPS WORD ┃
 // ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
 //                                     ┃    DEL    ┃ SPC/BSPC  ┃     `     ┃   ┃     -     ┃    BSPC   ┃  RETURN   ┃
 //                                     ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
@@ -62,7 +79,7 @@ label= "BASE"                              ;
 
                 &kp Q       &kp W       &kp F       &kp P       &kp B           &kp J          &kp L       &kp U       &kp Y       &kp SQT
                 &mt LCTRL A &mt LALT R  &mt LGUI S  &mt LSHFT T &kp G           &kp M          &mt RSHFT N &mt RGUI E  &mt RALT I  &mt RCTRL O
-    &caps_word  &kp Z       &kp X       &kp C       &kp D       &kp V           &kp K          &kp H       &kp COMMA   &kp DOT     &kp FSLH    &kp BSLH
+    &caps_word  &kp Z       &kp X       &kp C       &kp D       &kp V           &kp K          &kp H       &kp COMMA   &kp DOT     &kp FSLH    &caps_word
                                         &kp DEL     &spaceback  &lt NUM GRAVE   &lt UTIL MINUS &kp BSPC    &kp RET
                         >;
                 };
@@ -101,9 +118,9 @@ label= "NUM"                               ;
 label= "UTIL"                               ;
 // ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 //             ┏━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┓   ┏━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┓
-//             ┃           ┃           ┃   VOL+    ┃Play/Pause ┃           ┃   ┃           ┃ WIN UP L  ┃  WIN UP   ┃ WIN UP R  ┃           ┃
+//             ┃           ┃           ┃VOL+/Pl/Pau┃           ┃           ┃   ┃           ┃ WIN UP L  ┃  WIN UP   ┃ WIN UP R  ┃           ┃
 //             ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫
-//             ┃           ┃    PREV   ┃   VOL-    ┃   Next    ┃           ┃   ┃           ┃ WIN LEFT  ┃WIN CENTER ┃ WIN RIGHT ┃           ┃
+//             ┃           ┃    PREV   ┃VOL-/Mute  ┃   Next    ┃           ┃   ┃           ┃ WIN LEFT  ┃WIN CENTER ┃ WIN RIGHT ┃           ┃
 // ┏━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┓
 // ┃           ┃           ┃           ┃           ┃           ┃           ┃   ┃           ┃ WIN DN L  ┃ WIN DOWN  ┃ WIN DN R  ┃           ┃           ┃
 // ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
@@ -112,8 +129,8 @@ label= "UTIL"                               ;
  bindings = <
 // ╷           ╷           ╷           ╷             ╷         ╷         ╷     ╷            ╷              ╷              ╷                ╷           ╷     ╷
 
-                &none      &none       &kp C_VOL_UP  &kp C_PP   &none          &none        &kp LCAG(F17)  &kp LCAG(UP)    &kp LCAG(F15)   &none       
-                &none      &kp C_PREV  &kp C_VOL_DN  &kp C_NEXT &none          &none        &kp LCAG(LEFT) &kp LCAG(ENTER) &kp LCAG(RIGHT) &none 
+                &none      &none       &vol_up_pp    &none      &none          &none        &kp LCAG(F17)  &kp LCAG(UP)    &kp LCAG(F15)   &none       
+                &none      &kp C_PREV  &vol_dn_mt    &kp C_NEXT &none          &none        &kp LCAG(LEFT) &kp LCAG(ENTER) &kp LCAG(RIGHT) &none 
     &none       &none      &none       &none         &none      &none          &none        &kp LCAG(F18)  &kp LCAG(DOWN)  &kp LCAG(F16)   &none       &none         
                                        &trans        &trans     &mo SET        &trans       &trans         &trans      
                         >;
@@ -127,18 +144,18 @@ label= "UTIL"                               ;
 label= "SET"                               ;
 // ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 //             ┏━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┓   ┏━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┓
-//             ┃ BOOTLOAD  ┃ BT CLEAR  ┃           ┃           ┃           ┃   ┃           ┃    F7     ┃    F8     ┃    F9     ┃    F12    ┃
+//             ┃ BOOTLOAD  ┃ BT CLEAR  ┃           ┃           ┃SOFT POWER ┃   ┃           ┃    F7     ┃    F8     ┃    F9     ┃    F12    ┃
 //             ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫
-//             ┃  RESET    ┃           ┃           ┃           ┃           ┃   ┃           ┃    F4     ┃    F5     ┃    F6     ┃    F11    ┃
+//             ┃  RESET    ┃           ┃           ┃ LOCK MAC  ┃           ┃   ┃           ┃    F4     ┃    F5     ┃    F6     ┃    F11    ┃
 // ┏━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┓
-// ┃  BT #0    ┃  BT/USB   ┃           ┃           ┃           ┃           ┃   ┃           ┃    F1     ┃    F2     ┃    F3     ┃    F10    ┃           ┃
+// ┃  BT #0    ┃BT/USB TGGL┃           ┃           ┃           ┃           ┃   ┃           ┃    F1     ┃    F2     ┃    F3     ┃    F10    ┃   BT#1    ┃
 // ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
 //                                     ┃           ┃           ┃           ┃   ┃           ┃           ┃           ┃
 //                                     ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
  bindings = <
 // ╷           ╷             ╷         ╷            ╷           ╷           ╷   ╷           ╷           ╷           ╷           ╷           ╷           ╷
 
-                &bootloader  &none     &out OUT_TOG &none       &none           &none       &kp F7      &kp F8      &kp F9      &kp F12
+                &bootloader  &none     &none        &none       &soft_off       &none       &kp F7      &kp F8      &kp F9      &kp F12
                 &sys_reset   &none     &none        &kp MLOCK   &none           &none       &kp F4      &kp F5      &kp F6      &kp F11  
    &bt BT_SEL 0 &out OUT_TOG &none     &none        &none       &none           &none       &kp F1      &kp F2      &kp F3      &kp F10     &bt BT_SEL 1         
                                        &bt BT_CLR   &none       &none           &none       &none       &none      

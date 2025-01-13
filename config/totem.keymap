@@ -32,6 +32,14 @@
 };
 
 / {
+        behaviors {
+            spaceback: space_backspace {
+                compatible = "zmk,behavior-mod-morph";
+                #binding-cells = <0>;
+                bindings = <&kp SPACE>, <&kp BACKSPACE>;
+                mods = <(MOD_LSFT|MOD_RSFT)>;
+            };
+        };
         keymap {
                 compatible = "zmk,keymap";
 // ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
@@ -47,7 +55,7 @@ label= "BASE"                              ;
 // ┏━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┓
 // ┃ CAPS WORD ┃     Z     ┃     X     ┃     C     ┃     D     ┃     V     ┃   ┃     K     ┃     H     ┃     ,     ┃     .     ┃     /     ┃     \     ┃
 // ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
-//                                     ┃    DEL    ┃    SPC    ┃     `     ┃   ┃     -     ┃    BSPC   ┃  RETURN   ┃
+//                                     ┃    DEL    ┃ SPC/BSPC  ┃     `     ┃   ┃     -     ┃    BSPC   ┃  RETURN   ┃
 //                                     ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
  bindings = <
 // ╷           ╷           ╷           ╷           ╷           ╷           ╷   ╷              ╷           ╷           ╷           ╷           ╷           ╷
@@ -55,7 +63,7 @@ label= "BASE"                              ;
                 &kp Q       &kp W       &kp F       &kp P       &kp B           &kp J          &kp L       &kp U       &kp Y       &kp SQT
                 &mt LCTRL A &mt LALT R  &mt LGUI S  &mt LSHFT T &kp G           &kp M          &mt RSHFT N &mt RGUI E  &mt RALT I  &mt RCTRL O
     &caps_word  &kp Z       &kp X       &kp C       &kp D       &kp V           &kp K          &kp H       &kp COMMA   &kp DOT     &kp FSLH    &kp BSLH
-                                        &kp DEL     &kp SPACE   &lt NUM GRAVE   &lt UTIL MINUS &kp BSPC    &kp RET
+                                        &kp DEL     &spaceback  &lt NUM GRAVE   &lt UTIL MINUS &kp BSPC    &kp RET
                         >;
                 };
 
@@ -64,14 +72,14 @@ label= "BASE"                              ;
 
                 num_layer {
 // ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-label= "NUM"                              ;
+label= "NUM"                               ;
 // ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 //             ┏━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┓          ┏━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┓
 //             ┃    TAB    ┃     F1    ┃     UP    ┃    F2     ┃     {     ┃          ┃     }     ┃     7     ┃     8     ┃     9     ┃     |     ┃
 //             ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫          ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫
 //             ┃   ESC     ┃   LEFT    ┃    DOWN   ┃   RIGHT   ┃     [     ┃          ┃     ]     ┃     4     ┃     5     ┃     6     ┃     ;     ┃
 // ┏━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫          ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┓
-// ┃   BT_CLR  ┃    DEL    ┃   P UP    ┃  C LOCK   ┃  P DOWN   ┃     (     ┃          ┃     )     ┃     1     ┃     2     ┃     3     ┃     \     ┃           ┃
+// ┃           ┃    DEL    ┃   P UP    ┃  C LOCK   ┃  P DOWN   ┃     (     ┃          ┃     )     ┃     1     ┃     2     ┃     3     ┃     \     ┃           ┃
 // ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫          ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
 //                                     ┃           ┃           ┃           ┃          ┃     =     ┃     0     ┃           ┃
 //                                     ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛          ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
@@ -80,7 +88,7 @@ label= "NUM"                              ;
 
                 &kp TAB       &kp F1        &kp UP        &kp F2          &kp LBRC     &kp RBRC      &kp N7       &kp N8      &kp N9      &kp PIPE
                 &mt LCTRL ESC &mt LALT LEFT &mt LGUI DOWN &mt LSHFT RIGHT &kp LBKT     &kp RBKT      &mt RSHFT N4 &mt RGUI N5 &mt RALT N6 &mt RCTRL SEMI
-    &bt BT_CLR  &kp DEL       &kp PG_UP     &kp CAPS      &kp PG_DN       &kp LPAR     &kp RPAR      &kp N1       &kp N2      &kp N3      &kp BSLH      &trans      
+    &none       &kp DEL       &kp PG_UP     &kp CAPS      &kp PG_DN       &kp LPAR     &kp RPAR      &kp N1       &kp N2      &kp N3      &kp BSLH      &trans      
                                             &trans        &trans          &trans       &lt SET EQUAL &kp N0       &kp DOT      
                         >;
                 };

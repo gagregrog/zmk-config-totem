@@ -129,10 +129,10 @@ label= "UTIL"                               ;
  bindings = <
 // ╷           ╷           ╷           ╷             ╷         ╷         ╷     ╷            ╷              ╷              ╷                ╷           ╷     ╷
 
-                &none      &none       &vol_up_pp    &none      &none          &none        &kp LCAG(F17)  &kp LCAG(UP)    &kp LCAG(F15)   &none       
-                &none      &kp C_PREV  &vol_dn_mt    &kp C_NEXT &none          &none        &kp LCAG(LEFT) &kp LCAG(ENTER) &kp LCAG(RIGHT) &none 
-    &none       &none      &none       &none         &none      &none          &none        &kp LCAG(F18)  &kp LCAG(DOWN)  &kp LCAG(F16)   &none       &none         
-                                       &trans        &trans     &mo SET        &trans       &trans         &trans      
+                &none      &none       &vol_up_pp    &none      &none          &none        &kp LCAG(F17)        &kp LCAG(UP)         &kp LCAG(F15)        &none       
+                &none      &kp C_PREV  &vol_dn_mt    &kp C_NEXT &none          &none        &mt RSHFT LCAG(LEFT) &mt RGUI LCAG(ENTER) &mt RALT LCAG(RIGHT) &kp RCTRL 
+    &none       &none      &none       &none         &none      &none          &none        &kp LCAG(F18)        &kp LCAG(DOWN)       &kp LCAG(F16)        &none       &none         
+                                       &trans        &trans     &mo SET        &trans       &trans               &trans      
                         >;
                 };
 
@@ -164,3 +164,7 @@ label= "SET"                               ;
 
         };
 };
+
+
+
+

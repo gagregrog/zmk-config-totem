@@ -61,17 +61,6 @@
 };
 
 / {
-  combos {
-    compatible = "zmk,combos";
-    combo_esc {
-      timeout-ms = <50>;
-      key-positions = <13 16>;
-      bindings = <&caps_word>;
-    };
-  };
-};
-
-/ {
   behaviors {
     vol_up_pp: volume_up_play_pause {
       compatible = "zmk,behavior-mod-morph";
@@ -90,6 +79,23 @@
       #binding-cells = <0>;
       bindings = <&kp SPACE>, <&kp BACKSPACE>;
       mods = <(MOD_LSFT|MOD_RSFT)>;
+    };
+    index_combo: index_combo {
+      compatible = "zmk,behavior-hold-tap";
+      #binding-cells = <2>;
+      tapping-term-ms = <500>;
+      quick-tap-ms = <0>;
+      flavor = "hold-preferred";
+      bindings = <&caps_word &kp>;
+    };
+  };
+
+  combos {
+    compatible = "zmk,combos";
+    combo_index_fingers {
+      timeout-ms = <50>;
+      key-positions = <13 16>;
+      bindings = <&index_combo 0 F24>;
     };
   };
 

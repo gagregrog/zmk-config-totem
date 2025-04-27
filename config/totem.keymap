@@ -17,9 +17,10 @@
 #include <dt-bindings/zmk/outputs.h>
 
 #define BASE 0
-#define NUM  1
-#define UTIL 2
-#define SET  3
+#define BASE_NO_HRM 1
+#define NUM  2
+#define UTIL 3
+#define SET  4
 
 #define LCAG(KEY) LC(LA(LG(KEY)))
 #define MLOCK LG(LC(Q))
@@ -35,6 +36,30 @@
   flavor = "tap-preferred";
   tapping-term-ms = <170>;
 };
+
+/ {
+    macros {
+        sp_layer: sp_layer {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_press &kp SPACE &mo BASE_NO_HRM>
+                , <&macro_pause_for_release>
+                , <&macro_release &kp SPACE &mo BASE_NO_HRM>
+                ;
+        };
+        bsp_layer: bsp_layer {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_press &kp BACKSPACE &mo BASE_NO_HRM>
+                , <&macro_pause_for_release>
+                , <&macro_release &kp BACKSPACE &mo BASE_NO_HRM>
+                ;
+        };
+    };
+};
+
 
 / {
         behaviors {
@@ -57,6 +82,7 @@
                 mods = <(MOD_LSFT|MOD_RSFT)>;
             };
         };
+
         keymap {
                 compatible = "zmk,keymap";
 // ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
@@ -80,10 +106,34 @@ label= "BASE"                              ;
                 &kp Q       &kp W       &kp F       &kp P       &kp B           &kp J          &kp L       &kp U       &kp Y       &kp SQT
                 &mt LCTRL A &mt LALT R  &mt LGUI S  &mt LSHFT T &kp G           &kp M          &mt RSHFT N &mt RGUI E  &mt RALT I  &mt RCTRL O
     &caps_word  &kp Z       &kp X       &kp C       &kp D       &kp V           &kp K          &kp H       &kp COMMA   &kp DOT     &kp FSLH    &caps_word
-                                        &kp DEL     &spaceback  &lt NUM GRAVE   &lt UTIL MINUS &kp BSPC    &kp RET
+                                        &kp DEL     &sp_layer   &lt NUM GRAVE   &lt UTIL MINUS &bsp_layer  &kp RET
                         >;
                 };
 
+// ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+
+                base_no_hrm_layer {
+// ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+label= "BASE_NO_HRM"                       ;
+// ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+//             ┏━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┓   ┏━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┓
+//             ┃     Q     ┃     W     ┃     F     ┃     P     ┃     B     ┃   ┃     J     ┃     L     ┃     U     ┃     Y     ┃     '     ┃
+//             ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫
+//             ┃     A     ┃     R     ┃     S     ┃     T     ┃     G     ┃   ┃     M     ┃     N     ┃     E     ┃     I     ┃     O     ┃
+// ┏━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┓
+// ┃ CAPS WORD ┃     Z     ┃     X     ┃     C     ┃     D     ┃     V     ┃   ┃     K     ┃     H     ┃     ,     ┃     .     ┃     /     ┃ CAPS WORD ┃
+// ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
+//                                     ┃    DEL    ┃ SPC/BSPC  ┃     `     ┃   ┃     -     ┃    BSPC   ┃  RETURN   ┃
+//                                     ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
+ bindings = <
+// ╷           ╷           ╷           ╷           ╷           ╷           ╷   ╷              ╷           ╷           ╷           ╷           ╷           ╷
+
+                &trans      &trans      &trans      &trans      &trans          &trans         &trans      &trans      &trans      &trans
+                &kp A       &kp R       &kp S       &kp T       &trans          &trans         &kp N       &kp E       &kp I       &kp O      
+    &caps_word  &trans      &trans      &trans      &trans      &trans          &trans         &trans      &trans      &trans      &trans     &caps_word
+                                        &trans      &trans      &trans          &trans         &trans      &trans
+                        >;
+                };
 // ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
 
 
@@ -103,9 +153,9 @@ label= "NUM"                               ;
  bindings = <
 // ╷           ╷             ╷             ╷             ╷               ╷        ╷   ╷             ╷            ╷           ╷            ╷           ╷           ╷
 
-                &kp TAB       &kp F1        &kp UP        &kp F2          &kp LBRC     &kp RBRC      &kp N7       &kp N8      &kp N9      &kp PIPE
-                &mt LCTRL ESC &mt LALT LEFT &mt LGUI DOWN &mt LSHFT RIGHT &kp LBKT     &kp RBKT      &mt RSHFT N4 &mt RGUI N5 &mt RALT N6 &mt RCTRL SEMI
-    &none       &kp DEL       &kp PG_UP     &kp CAPS      &kp PG_DN       &kp LPAR     &kp RPAR      &kp N1       &kp N2      &kp N3      &kp BSLH      &trans      
+                &kp TAB       &kp F1        &kp UP        &kp F2          &kp LPAR     &kp RPAR      &kp N7       &kp N8      &kp N9      &kp PIPE
+                &mt LCTRL ESC &mt LALT LEFT &mt LGUI DOWN &mt LSHFT RIGHT &kp LBRC     &kp RBRC      &mt RSHFT N4 &mt RGUI N5 &mt RALT N6 &mt RCTRL SEMI
+    &none       &kp DEL       &kp PG_UP     &kp CAPS      &kp PG_DN       &kp LBKT     &kp RBKT      &kp N1       &kp N2      &kp N3      &kp BSLH      &trans      
                                             &trans        &trans          &trans       &lt SET EQUAL &kp N0       &kp DOT      
                         >;
                 };
@@ -129,9 +179,9 @@ label= "UTIL"                               ;
  bindings = <
 // ╷           ╷           ╷           ╷             ╷         ╷         ╷     ╷            ╷              ╷              ╷                ╷           ╷     ╷
 
-                &none      &none       &vol_up_pp    &kp C_PP   &none          &none        &kp LCAG(F17)        &kp LCAG(UP)         &kp LCAG(F15)        &none       
-                &none      &kp C_PREV  &vol_dn_mt    &kp C_NEXT &none          &none        &mt RSHFT LCAG(LEFT) &mt RGUI LCAG(ENTER) &mt RALT LCAG(RIGHT) &kp RCTRL 
-    &none       &none      &none       &none         &none      &none          &none        &kp LCAG(F18)        &kp LCAG(DOWN)       &kp LCAG(F16)        &none       &none         
+                &none      &none       &vol_up_pp    &kp C_PP   &kp LPAR       &kp RPAR     &kp LCAG(F17)        &kp LCAG(UP)         &kp LCAG(F15)        &none       
+                &none      &kp C_PREV  &vol_dn_mt    &kp C_NEXT &kp LBRC       &kp RBRC     &mt RSHFT LCAG(LEFT) &mt RGUI LCAG(ENTER) &mt RALT LCAG(RIGHT) &kp RCTRL 
+    &none       &none      &none       &none         &none      &kp LBKT       &kp RBKT     &kp LCAG(F18)        &kp LCAG(DOWN)       &kp LCAG(F16)        &none       &none         
                                        &trans        &trans     &mo SET        &trans       &trans               &trans      
                         >;
                 };
@@ -164,7 +214,4 @@ label= "SET"                               ;
 
         };
 };
-
-
-
 

@@ -29,7 +29,6 @@
   continue-list = <UNDERSCORE MINUS>;
 };
 
-
 &mt {
   quick-tap-ms = <200>;
   global-quick-tap;

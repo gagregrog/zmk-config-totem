@@ -26,7 +26,7 @@
 #define MLOCK LG(LC(Q))
 
 &caps_word {
-    continue-list = <UNDERSCORE MINUS>;
+  continue-list = <UNDERSCORE MINUS>;
 };
 
 
@@ -38,68 +38,67 @@
 };
 
 / {
-    macros {
-        sp_layer: sp_layer {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings
-                = <&macro_press &kp SPACE &mo BASE_NO_HRM>
-                , <&macro_pause_for_release>
-                , <&macro_release &kp SPACE &mo BASE_NO_HRM>
-                ;
-        };
-        bsp_layer: bsp_layer {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings
-                = <&macro_press &kp BACKSPACE &mo BASE_NO_HRM>
-                , <&macro_pause_for_release>
-                , <&macro_release &kp BACKSPACE &mo BASE_NO_HRM>
-                ;
-        };
+  macros {
+    sp_layer: sp_layer {
+      compatible = "zmk,behavior-macro";
+      #binding-cells = <0>;
+      bindings
+      = <&macro_press &kp SPACE &mo BASE_NO_HRM>
+      , <&macro_pause_for_release>
+      , <&macro_release &kp SPACE &mo BASE_NO_HRM>
+      ;
     };
+    bsp_layer: bsp_layer {
+      compatible = "zmk,behavior-macro";
+      #binding-cells = <0>;
+      bindings
+      = <&macro_press &kp BACKSPACE &mo BASE_NO_HRM>
+      , <&macro_pause_for_release>
+      , <&macro_release &kp BACKSPACE &mo BASE_NO_HRM>
+      ;
+    };
+  };
 };
 
 / {
-    combos {
-        compatible = "zmk,combos";
-        combo_esc {
-            timeout-ms = <50>;
-            key-positions = <13 16>;
-            bindings = <&caps_word>;
-        };
+  combos {
+    compatible = "zmk,combos";
+    combo_esc {
+      timeout-ms = <50>;
+      key-positions = <13 16>;
+      bindings = <&caps_word>;
     };
+  };
 };
 
 / {
-        behaviors {
-            vol_up_pp: volume_up_play_pause {
-                compatible = "zmk,behavior-mod-morph";
-                #binding-cells = <0>;
-                bindings = <&kp C_VOL_UP>, <&kp C_PP>;
-                mods = <(MOD_LSFT|MOD_RSFT)>;
-            };
-            vol_dn_mt: volume_down_mute {
-                compatible = "zmk,behavior-mod-morph";
-                #binding-cells = <0>;
-                bindings = <&kp C_VOL_DN>, <&kp C_MUTE>;
-                mods = <(MOD_LSFT|MOD_RSFT)>;
-            };
-            spaceback: space_backspace {
-                compatible = "zmk,behavior-mod-morph";
-                #binding-cells = <0>;
-                bindings = <&kp SPACE>, <&kp BACKSPACE>;
-                mods = <(MOD_LSFT|MOD_RSFT)>;
-            };
-        };
+  behaviors {
+    vol_up_pp: volume_up_play_pause {
+      compatible = "zmk,behavior-mod-morph";
+      #binding-cells = <0>;
+      bindings = <&kp C_VOL_UP>, <&kp C_PP>;
+      mods = <(MOD_LSFT|MOD_RSFT)>;
+    };
+    vol_dn_mt: volume_down_mute {
+      compatible = "zmk,behavior-mod-morph";
+      #binding-cells = <0>;
+      bindings = <&kp C_VOL_DN>, <&kp C_MUTE>;
+      mods = <(MOD_LSFT|MOD_RSFT)>;
+    };
+    spaceback: space_backspace {
+      compatible = "zmk,behavior-mod-morph";
+      #binding-cells = <0>;
+      bindings = <&kp SPACE>, <&kp BACKSPACE>;
+      mods = <(MOD_LSFT|MOD_RSFT)>;
+    };
+  };
 
-        keymap {
-                compatible = "zmk,keymap";
-// ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+  keymap {
+    compatible = "zmk,keymap";
 
-                base_layer {
+    base_layer {
 // ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-label= "BASE"                              ;
+      label= "BASE"                        ;
 // ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 //             ┏━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┓   ┏━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┓
 //             ┃     Q     ┃     W     ┃     F     ┃     P     ┃     B     ┃   ┃     J     ┃     L     ┃     U     ┃     Y     ┃     '     ┃
@@ -110,21 +109,19 @@ label= "BASE"                              ;
 // ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
 //                                     ┃    DEL    ┃ SPC/BSPC  ┃     `     ┃   ┃     -     ┃    BSPC   ┃  RETURN   ┃
 //                                     ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
- bindings = <
+      bindings = <
 // ╷           ╷           ╷           ╷           ╷           ╷           ╷   ╷              ╷           ╷           ╷           ╷           ╷           ╷
 
                 &kp Q       &kp W       &kp F       &kp P       &kp B           &kp J          &kp L       &kp U       &kp Y       &kp SQT
                 &mt LCTRL A &mt LALT R  &mt LGUI S  &mt LSHFT T &kp G           &kp M          &mt RSHFT N &mt RGUI E  &mt RALT I  &mt RCTRL O
     &caps_word  &kp Z       &kp X       &kp C       &kp D       &kp V           &kp K          &kp H       &kp COMMA   &kp DOT     &kp FSLH    &caps_word
                                         &kp DEL     &sp_layer   &lt NUM GRAVE   &lt UTIL MINUS &bsp_layer  &kp RET
-                        >;
-                };
+      >;
+    };
 
-// ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
-
-                base_no_hrm_layer {
+    base_no_hrm_layer {
 // ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-label= "BASE_NO_HRM"                       ;
+      label= "BASE_NO_HRM"                 ;
 // ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 //             ┏━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┓   ┏━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┓
 //             ┃     Q     ┃     W     ┃     F     ┃     P     ┃     B     ┃   ┃     J     ┃     L     ┃     U     ┃     Y     ┃     '     ┃
@@ -135,21 +132,19 @@ label= "BASE_NO_HRM"                       ;
 // ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
 //                                     ┃    DEL    ┃ SPC/BSPC  ┃     `     ┃   ┃     -     ┃    BSPC   ┃  RETURN   ┃
 //                                     ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
- bindings = <
+      bindings = <
 // ╷           ╷           ╷           ╷           ╷           ╷           ╷   ╷              ╷           ╷           ╷           ╷           ╷           ╷
 
                 &trans      &trans      &trans      &trans      &trans          &trans         &trans      &trans      &trans      &trans
                 &kp A       &kp R       &kp S       &kp T       &trans          &trans         &kp N       &kp E       &kp I       &kp O      
     &caps_word  &trans      &trans      &trans      &trans      &trans          &trans         &trans      &trans      &trans      &trans     &caps_word
                                         &trans      &trans      &trans          &trans         &trans      &trans
-                        >;
-                };
-// ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+      >;
+    };
 
-
-                num_layer {
+    num_layer {
 // ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-label= "NUM"                               ;
+      label= "NUM"                         ;
 // ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 //             ┏━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┓          ┏━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┓
 //             ┃    TAB    ┃     F1    ┃     UP    ┃    F2     ┃     {     ┃          ┃     }     ┃     7     ┃     8     ┃     9     ┃     |     ┃
@@ -160,22 +155,19 @@ label= "NUM"                               ;
 // ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫          ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
 //                                     ┃           ┃           ┃           ┃          ┃     =     ┃     0     ┃           ┃
 //                                     ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛          ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
- bindings = <
+      bindings = <
 // ╷           ╷             ╷             ╷             ╷               ╷        ╷   ╷             ╷            ╷           ╷            ╷           ╷           ╷
 
                 &kp TAB       &kp F1        &kp UP        &kp F2          &kp LPAR     &kp RPAR      &kp N7       &kp N8      &kp N9      &kp PIPE
                 &mt LCTRL ESC &mt LALT LEFT &mt LGUI DOWN &mt LSHFT RIGHT &kp LBRC     &kp RBRC      &mt RSHFT N4 &mt RGUI N5 &mt RALT N6 &mt RCTRL SEMI
     &none       &kp DEL       &kp PG_UP     &kp CAPS      &kp PG_DN       &kp LBKT     &kp RBKT      &kp N1       &kp N2      &kp N3      &kp BSLH      &trans      
                                             &trans        &trans          &trans       &lt SET EQUAL &kp N0       &kp DOT      
-                        >;
-                };
+      >;
+    };
 
-// ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
-
-
-                util_layer {
+    util_layer {
 // ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-label= "UTIL"                               ;
+      label= "UTIL"                        ;
 // ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 //             ┏━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┓   ┏━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┓
 //             ┃           ┃           ┃VOL+/Pl/Pau┃PLAY/PAUSE ┃           ┃   ┃           ┃ WIN UP L  ┃  WIN UP   ┃ WIN UP R  ┃           ┃
@@ -186,22 +178,19 @@ label= "UTIL"                               ;
 // ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
 //                                     ┃           ┃           ┃    SET    ┃   ┃           ┃           ┃           ┃
 //                                     ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
- bindings = <
+      bindings = <
 // ╷           ╷           ╷           ╷             ╷         ╷         ╷     ╷            ╷              ╷              ╷                ╷           ╷     ╷
 
                 &none      &none       &vol_up_pp    &kp C_PP   &kp LPAR       &kp RPAR     &kp LCAG(F17)        &kp LCAG(UP)         &kp LCAG(F15)        &none       
                 &none      &kp C_PREV  &vol_dn_mt    &kp C_NEXT &kp LBRC       &kp RBRC     &mt RSHFT LCAG(LEFT) &mt RGUI LCAG(ENTER) &mt RALT LCAG(RIGHT) &kp RCTRL 
     &none       &none      &none       &none         &none      &kp LBKT       &kp RBKT     &kp LCAG(F18)        &kp LCAG(DOWN)       &kp LCAG(F16)        &none       &none         
                                        &trans        &trans     &mo SET        &trans       &trans               &trans      
-                        >;
-                };
+      >;
+    };
 
-// ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
-
-
-                settings_layer {
+    settings_layer {
 // ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-label= "SET"                               ;
+      label= "SET"                         ;
 // ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 //             ┏━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┓   ┏━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┓
 //             ┃ BOOTLOAD  ┃ BT CLEAR  ┃           ┃           ┃SOFT POWER ┃   ┃           ┃    F7     ┃    F8     ┃    F9     ┃    F12    ┃
@@ -212,16 +201,15 @@ label= "SET"                               ;
 // ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
 //                                     ┃           ┃           ┃           ┃   ┃           ┃           ┃           ┃
 //                                     ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
- bindings = <
+      bindings = <
 // ╷           ╷             ╷         ╷            ╷           ╷           ╷   ╷           ╷           ╷           ╷           ╷           ╷           ╷
 
                 &bootloader  &none     &none        &none       &soft_off       &none       &kp F7      &kp F8      &kp F9      &kp F12
                 &sys_reset   &none     &none        &kp MLOCK   &none           &none       &kp F4      &kp F5      &kp F6      &kp F11  
    &bt BT_SEL 0 &out OUT_TOG &none     &none        &none       &none           &none       &kp F1      &kp F2      &kp F3      &kp F10     &bt BT_SEL 1         
                                        &bt BT_CLR   &none       &none           &none       &none       &none      
-                        >;
-                };
-
-        };
+      >;
+    };
+  };
 };
 

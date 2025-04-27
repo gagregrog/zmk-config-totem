@@ -1,3 +1,18 @@
+## Troubleshooting Bluetooth
+
+For the totem layout we have bluetooth channel select buttons mapped to each of the outer pinky bonus keys.
+
+The left for channel 0, currently linked to the personal laptop, and the right for channel 1, currently linked to the work laptop.
+
+Activate the utility layer by pressing both thumb layer keys at the same time and then press one of the pinky buttons to select the host.
+
+If the connection isn't working you may need to do the following:
+
+1. On the host, go to bluetooth settings and forget the Totem
+2. On the keyboard, go select the bluetooth channel for the computer you want to disconnect from
+3. Activate the utility layer as described earlier and then press the leftmost thumb key to clear the bt connection
+4. Reconnect the Totem on the host in bluetooth settings
+
 ## Setup Local Builds
 
 [Setup Instructions](https://zmk.dev/docs/development/local-toolchain/setup/container?container=podman)

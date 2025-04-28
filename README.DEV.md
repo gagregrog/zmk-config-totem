@@ -23,20 +23,35 @@ Install `podman` cli: https://podman.io/docs/installation
 
 ## Configuration
 
+Note: The following commands assume the structure indicated:
+
+```sh
+~/dev/keyboards/zmk/zmk_firmware
+~/dev/keyboards/zmk/keyboards/totem/zmk-config-totem
+```
+
 Clone `zmk` repo:
 
 ```sh
-git clone https://github.com/zmkfirmware/zmk.git
+git clone https://github.com/zmkfirmware/zmk.git ~/dev/keyboards/zmk/zmk_firmware
 ```
 
 ### Create Volumes
 
+Note: I don't think we actually need to create this volume 🤔
+
 ```sh
 podman volume create --driver local -o o=bind -o type=none \
- -o device="/Users/robertreed/dev/keyboards/zmk/keyboards/totem/zmk-config-totem" zmk-config
+ -o device="~/dev/keyboards/zmk/keyboards/totem/zmk-config-totem" zmk-config
 ```
 
 If you are using modules, you would need to create a volume for them too.
+
+### Build the Image
+
+```sh
+podman build -t zmk-local -f Dockerfile ~/dev/keyboards/zmk/zmk_firmware/.devcontainer
+```
 
 ### Initialize the Container
 
@@ -44,10 +59,10 @@ If you are using modules, you would need to create a volume for them too.
 podman run -it --rm \
   --security-opt label=disable \
   --workdir /workspaces/zmk \
-  -v /Users/robertreed/dev/keyboards/zmk/zmk:/workspaces/zmk \
-  -v /Users/robertreed/dev/keyboards/zmk/keyboards/totem/zmk-config-totem:/workspaces/zmk-config \   # Removeable
+  -v ~/dev/keyboards/zmk/zmk_firmware:/workspaces/zmk \
+  -v ~/dev/keyboards/zmk/keyboards/totem/zmk-config-totem:/workspaces/zmk-config \
   -p 3000:3000 \
-  <container-name> /bin/bash
+  zmk-local /bin/bash
 ```
 
 If you are using modules, you would need to mount that directory too.

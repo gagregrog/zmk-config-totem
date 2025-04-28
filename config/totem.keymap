@@ -73,12 +73,6 @@
       bindings = <&kp C_VOL_DN>, <&kp C_MUTE>;
       mods = <(MOD_LSFT|MOD_RSFT)>;
     };
-    spaceback: space_backspace {
-      compatible = "zmk,behavior-mod-morph";
-      #binding-cells = <0>;
-      bindings = <&kp SPACE>, <&kp BACKSPACE>;
-      mods = <(MOD_LSFT|MOD_RSFT)>;
-    };
     index_combo: index_combo {
       compatible = "zmk,behavior-hold-tap";
       #binding-cells = <2>;
@@ -100,6 +94,16 @@
       timeout-ms = <50>;
       key-positions = <12 17>;
       bindings = <&kp F23>;
+    };
+    combo_ring_fingers {
+      timeout-ms = <50>;
+      key-positions = <11 18>;
+      bindings = <&kp F22>;
+    };
+    combo_index_fingers {
+      timeout-ms = <50>;
+      key-positions = <10 19>;
+      bindings = <&kp F21>;
     };
   };
 

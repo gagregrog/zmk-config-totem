@@ -100,7 +100,7 @@
       key-positions = <11 18>;
       bindings = <&kp F22>;
     };
-    combo_index_fingers {
+    combo_pinky_fingers {
       timeout-ms = <50>;
       key-positions = <10 19>;
       bindings = <&kp F21>;

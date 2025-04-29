@@ -1,0 +1,10 @@
+#! /usr/bin/env bash
+
+podman run -it --rm \
+  --security-opt label=disable \
+  --workdir /workspaces/zmk \
+  -v ~/dev/keyboards/zmk/zmk_firmware:/workspaces/zmk \
+  -v ~/dev/keyboards/zmk/keyboards/totem/zmk-config-totem:/workspaces/zmk-config \
+  -v ~/dev/keyboards/zmk/keyboards/totem/zmk-config-totem/.aliases:/root/.aliases \
+  -p 3000:3000 \
+  zmk-local /bin/bash -c "cd app && echo -e '\nsource /root/.aliases' >> ~/.bashrc && bash"

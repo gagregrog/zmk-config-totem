@@ -65,6 +65,12 @@ podman run -it --rm \
   zmk-local /bin/bash
 ```
 
+As a convenience, this is exposed in `./run`, so run it with:
+
+```sh
+./run
+```
+
 If you are using modules, you would need to mount that directory too.
 
 ### Configure Zephyr Workspace
@@ -120,12 +126,26 @@ And then afterwards:
 west build -d build/totem/right
 ```
 
+### `./run`
+
+If you use `./run` to start the container the following will happen automatically:
+
+- you will be moved into `/workspaces/zmk/app`
+- you will have access to the `build-left` and `build-right` aliases as shown in `./.aliases`
+
 ## Flashing
 
 Now that you have a build, you need to flash it to the board. Make sure you flash the correct left/right half.
 
-The build file will be found as `/zephyr/zmk.uf2` within the build directory you specified.
+The build file will be found as `zmk_firmware/app/build/totem/{side}/zephyr/zmk.uf2`.
 
-For example, `/workspaces/zmk/app/build/totem/left/zephyr/zmk.uf2`.
+You should be able to find the file within the `zmk` folder on your computer as well as within the container.
 
-You should be able to find the file within the `zmk` folder on your computer as well as within podman.
+As a convenience, you can run `./flash` and it will copy the file to your keyboard assuming the following is true:
+
+- The firmware file exists on your local filesystem at the expected location
+- The keyboard is mounted in bootloader mode and accessible as `/Volumes/XIAO-SENSE`
+
+You can pass `--left` or `--right`, but it will default to left.
+
+It will prompt you to confirm before copying the file.

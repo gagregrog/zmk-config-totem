@@ -1,0 +1,4 @@
+# ZMK build aliases
+alias build-left="west build -d build/totem/left -b seeeduino_xiao_ble -- -DSHIELD=totem_left -DZMK_CONFIG=/workspaces/zmk-config/config -DSHIELD_DIR=/workspaces/zmk-config/boards/shields"
+alias build-right="west build -d build/totem/right -b seeeduino_xiao_ble -- -DSHIELD=totem_right -DZMK_CONFIG=/workspaces/zmk-config/config -DSHIELD_DIR=/workspaces/zmk-config/boards/shields"
+

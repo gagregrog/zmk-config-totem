@@ -1,0 +1,35 @@
+#! /usr/bin/env bash
+
+SIDE="left"
+while [[ "$#" -gt 0 ]]; do
+    case $1 in
+        --left) SIDE="left" ;;
+        --right) SIDE="right" ;;
+        *) echo "Unknown parameter: $1"; exit 1 ;;
+    esac
+    shift
+done
+
+XIAO="/Volumes/XIAO-SENSE"
+SRC="$HOME/dev/keyboards/zmk/zmk_firmware/app/build/totem/$SIDE/zephyr/zmk.uf2"
+
+if [ ! -d $XIAO ]; then
+    echo -e "Error: Could not find XIAO-SENSE\n\nMake sure it is plugged in and then double tap the reset button to enter bootloader mode"
+    exit 1
+fi
+
+if [ ! -f $SRC ]; then
+    echo -e "Error: Could not find firmware\n\n$SRC"
+    exit 1
+fi
+
+echo -e "Ready to copy to the $SIDE half?\n\n\t $SRC -> $XIAO\n"
+read -p "Continue? (y/N) " -n 1 -r
+echo
+if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+    echo "Operation cancelled"
+    exit 1
+fi
+
+cp $SRC $XIAO
+
